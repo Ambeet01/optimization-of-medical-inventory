@@ -1,0 +1,20 @@
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+dataset = pd.read_csv(r"C:\Users\Ambeet Mohapatra\Downloads\Medical Inventory Optimaization Dataset.csv")
+dataset.head()
+dataset.columns
+dataset.isnull().sum()
+dataset.isnull()
+dataset.isna().sum()
+dataset.duplicated().sum()
+plt.figure(figsize=(8, 6))
+import matplotlib.pyplot as plt
+categories = ['Specialisation1', 'Specialisation7', 'Specialisation 2', 'Specialisation10']
+inventory_counts = [150, 200, 120, 180]
+plt.bar(categories, inventory_counts, color='blue')
+import matplotlib.pyplot as plt
+categories = ['Specialisation 1', 'Specialisation 5', 'Specialisation 3', 'Specialisation 10']
+inventory_counts = [150, 200, 120, 180]
+plt.pie(inventory_counts, labels=categories, autopct='%1.1f%%', startangle=90, colors=['blue', 'green', 'orange', 'red'])
+plt.title('Medical Inventory Pie Chart')
