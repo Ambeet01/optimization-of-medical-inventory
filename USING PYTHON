@@ -1,0 +1,47 @@
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+dataset = pd.read_csv(r"C:\Users\Ambeet Mohapatra\Downloads\Medical Inventory Optimaization Dataset.csv")
+dataset.head()
+dataset.columns
+dataset.isnull().sum()
+dataset.isnull()
+dataset.isna().sum()
+dataset.duplicated().sum()
+
+plt.figure(figsize=(8, 6))
+plt.title('Distrubtion of quantity')
+plt.xlabel('quantity')
+plt.xticks(rotation=45)
+plt.tight_layout()
+plt.show()
+plt.figure(figsize=(8, 8))
+quantity = dataset['quantity'].value_counts()
+plt.pie(quantity, labels=quantity .index, autopct='%1.1f%%', startangle=140)
+plt.title('Distribution of quantity (Pie Chart)')
+plt.axis('equal')
+plt.figure(figsize=(10, 6))
+plt.figure(figsize=(10, 6))
+quantity = dataset.groupby('quantity')['Final_cost'].sum()
+plt.title('Quantity of Products by Final_cost')
+plt.xlabel('')
+plt.ylabel('Total Quantity (quantity)')
+plt.xticks(rotation=45)
+plt.tight_layout()
+plt.show()
+quantity = dataset.groupby('quantity')['quantity'].sum()
+plt.figure(figsize=(10, 6))
+quantity.plot(kind='line', color='green', marker='o')
+plt.title('Quantity of Products Over Time')
+plt.xlabel('Date')
+grouped_data = dataset.groupby(['City', 'Region'])['QTY'].sum().reset_index()
+bubble_size = grouped_data['QTY'] * 10 
+plt.figure(figsize=(12, 8))
+plt.scatter(grouped_data['City'], grouped_data['Region'], s=bubble_size, alpha=0.5, c='green')
+plt.title('Bubble Chart - Quantity by City and Region')
+plt.xlabel('City')
+plt.ylabel('Region')
+plt.show()
+region_qty = dataset.groupby('Region')['QTY'].sum().reset_index()
+import pandas as pd
+import matplotlib.pyplot as plt
