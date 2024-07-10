@@ -1,0 +1,46 @@
+create database dataanalytics_db;
+use dataanalytics_db;
+CREATE TABLE  `medical inventory optimaization dataset` (
+    patient_ID VARCHAR(1), 
+    Final_sales VARCHAR(1007) 
+);
+
+select* from `medical inventory optimaization dataset`;
+select count(*) As total_records from`medical inventory optimaization dataset`;
+select* from `medical inventory optimaization dataset`Limit 5;
+select* from `medical inventory optimaization dataset`  Limit 2;
+select* from  `medical inventory optimaization dataset`order by 'dept' desc limit 10;
+select* from `medical inventory optimaization dataset` order by 'quantity' desc limit 5;
+SELECT AVG(quantity) AS mean_quantity
+FROM `medical inventory optimaization dataset`;
+select count(*) from `medical inventory optimaization dataset`
+where Quantity is null; 
+select final_cost,count(final_cost) from `medical inventory full dataset`
+group by final_cost;     
+select Final_cost, avg(Formulation) as avg_final_cost
+from `medical inventory optimaization dataset`
+group by Final_cost;
+select quantity, avg(quantity) as avg_quantity
+from `medical inventory optimaization dataset`
+group by quantity;
+select quantity, avg(quantity) as avg_quantity
+from `medical inventory optimaization dataset`
+group by quantity;
+with quantity as (
+select
+*,
+(final_sales- avg(final_sales) over())/stddev(final_sales) over() as final_sales
+from `medical inventory optimaization dataset`
+)
+select*
+from `medical inventory optimaization dataset`
+where ABS(final_cost)>50;
+with final_cost as (
+select
+*,
+(final_cost- avg(final_cost) over())/stddev(final_cost) over() as sales
+from `medical inventory optimaization dataset`
+)
+select*
+from `medical inventory optimaization dataset`
+where ABS(final_sales)>50;
